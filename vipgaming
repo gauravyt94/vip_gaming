@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIP Gaming Result</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      font-family: 'Courier New', Courier, monospace;
+      color: #0ff;
+      overflow: hidden;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .panel {
+      border: 3px solid #0ff;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 20px #0ff;
+    }
+    .title {
+      font-size: 28px;
+      color: #00ffee;
+      text-shadow: 0 0 10px #00ffee;
+    }
+    .subtitle {
+      font-size: 22px;
+      color: red;
+    }
+    #result {
+      font-size: 50px;
+      margin: 20px 0;
+      text-shadow: 0 0 15px #0ff;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #checkBtn {
+      background: #00ffcc;
+      color: black;
+    }
+    #registerBtn {
+      background: #ff0044;
+      color: white;
+    }
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      color: #00ffee;
+    }
+    .telegram {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+    }
+    .telegram a {
+      background: #00abec;
+      border-radius: 50%;
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      box-shadow: 0 0 15px #00abec;
+    }
+    .telegram img {
+      width: 60px;
+      height: 60px;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+<div class="container">
+  <div class="panel">
+    <div class="title">VIP GAMING</div>
+    <div class="subtitle">Result</div>
+    <div id="result">READY</div>
+    <button id="checkBtn">CHECK</button><br>
+    <button id="registerBtn" onclick="window.location.href='https://yourgame.link'">REGISTER FOR GAME</button>
+  </div>
+</div>
+<div class="telegram">
+  <a href="https://t.me/yourtelegram" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+  </a>
+</div>
+<div class="footer">VIP Hacker UI • BIG / SMALL Engine</div>
+<script>
+  const result = document.getElementById("result");
+  const checkBtn = document.getElementById("checkBtn");
+  checkBtn.onclick = () => {
+    result.textContent = "LOADING...";
+    setTimeout(() => {
+      const prediction = Math.random() > 0.5 ? "BIG" : "SMALL";
+      result.textContent = prediction;
+    }, 5000);
+  };
+
+  // Optional basic particles
+  const canvas = document.getElementById("particles");
+  const ctx = canvas.getContext("2d");
+  let particlesArray = [];
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 2 + 1;
+      this.speedX = Math.random() * 1 - 0.5;
+      this.speedY = Math.random() * 1 - 0.5;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+      }
+    }
+    draw() {
+      ctx.fillStyle = '#0ff';
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particlesArray = [];
+    for (let i = 0; i < 100; i++) {
+      particlesArray.push(new Particle());
+    }
+  }
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particlesArray.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  initParticles();
+  animateParticles();
+</script>
+</body>
+</html>
+
+
+Here is your complete HTML + CSS code with the following features:
+
+Same neon hacker-style UI
+
+Check button triggers 5-second loading and shows "BIG" or "SMALL"
+
+Telegram icon fixed at the bottom right
+
+Register button (you can link your game)
+
+
+You can edit the Telegram and Register links by changing href in the code. Let me know if you'd like to add sound, animations, or more features.
+
+  
